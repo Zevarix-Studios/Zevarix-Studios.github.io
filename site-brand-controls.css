@@ -1,0 +1,81 @@
+/* Zevarix Studios secondary controls and GitHub link treatment. */
+
+.github-control {
+  --github-control-border: rgba(34, 211, 238, .52);
+  --github-control-glow: rgba(34, 211, 238, .12);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: .58rem;
+  border: 1px solid transparent;
+  border-radius: .78rem .2rem .78rem .2rem;
+  color: var(--starlight);
+  background:
+    linear-gradient(135deg, rgba(16, 29, 43, .96), rgba(11, 16, 32, .94)) padding-box,
+    linear-gradient(135deg, rgba(34, 211, 238, .68), rgba(37, 99, 235, .72) 56%, rgba(168, 85, 247, .62)) border-box;
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, .025),
+    0 .6rem 1.7rem rgba(0, 0, 0, .22),
+    0 0 1.1rem var(--github-control-glow);
+  text-decoration: none;
+  transition: transform .2s ease, color .2s ease, box-shadow .2s ease, filter .2s ease;
+}
+
+.github-control:hover {
+  color: var(--starlight);
+  transform: translateY(-.12rem);
+  filter: brightness(1.08);
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, .05),
+    0 .85rem 2rem rgba(0, 0, 0, .26),
+    0 0 1.45rem rgba(34, 211, 238, .17);
+}
+
+.github-mark {
+  width: 1.18rem;
+  height: 1.18rem;
+  flex: 0 0 auto;
+  fill: currentColor;
+}
+
+/* Higher specificity than .primary-nav a so the intended internal spacing wins. */
+.primary-nav .nav-cta--github {
+  min-height: 3rem;
+  gap: .75rem;
+  padding: .68rem 1.6rem;
+}
+
+.button--github {
+  min-height: 3.35rem;
+  padding: .78rem 1.22rem;
+  font-weight: 730;
+}
+
+.github-link-inline {
+  display: inline-flex;
+  align-items: center;
+  gap: .48rem;
+}
+
+.github-link-inline .github-mark {
+  width: 1.02rem;
+  height: 1.02rem;
+}
+
+@media (max-width: 48rem) {
+  .primary-nav .nav-cta--github {
+    min-height: 3rem;
+    padding-inline: 1.35rem;
+  }
+
+  .button--github {
+    min-height: 3.4rem;
+  }
+}
+
+@media (prefers-contrast: more) {
+  .github-control {
+    background: #0B1020;
+    border-color: var(--stellar-cyan);
+  }
+}
