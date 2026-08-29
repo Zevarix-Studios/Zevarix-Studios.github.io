@@ -1,0 +1,80 @@
+/* Public-site bridge for canonical Zevarix Studios identity.
+ * The organization avatar is public and carries the approved Constellation Z mark.
+ * The private brand repository remains the authority for raster lockups.
+ */
+
+.brand-link {
+  display: inline-flex;
+  align-items: center;
+  gap: .72rem;
+}
+
+.brand-link img {
+  width: 2.8rem;
+  height: 2.8rem;
+  object-fit: contain;
+  flex: 0 0 auto;
+}
+
+.brand-wordmark {
+  display: inline-flex;
+  flex-direction: column;
+  color: var(--starlight);
+  line-height: .9;
+  letter-spacing: .09em;
+  text-transform: uppercase;
+}
+
+.brand-wordmark strong {
+  font-size: 1.02rem;
+  font-weight: 800;
+  letter-spacing: .13em;
+}
+
+.brand-wordmark small {
+  margin-top: .28rem;
+  color: #74CFFF;
+  font-size: .49rem;
+  font-weight: 800;
+  letter-spacing: .42em;
+}
+
+.hero-mark,
+.closing-mark img {
+  object-fit: contain;
+}
+
+.footer-brand {
+  display: inline-flex;
+  align-items: center;
+  gap: .65rem;
+}
+
+.footer-brand img {
+  width: 2.35rem;
+  height: 2.35rem;
+  object-fit: contain;
+}
+
+.footer-brand .brand-wordmark strong {
+  font-size: .86rem;
+}
+
+.footer-brand .brand-wordmark small {
+  font-size: .43rem;
+}
+
+@media (max-width: 48rem) {
+  .brand-link img {
+    width: 2.55rem;
+    height: 2.55rem;
+  }
+
+  .brand-wordmark strong {
+    font-size: .9rem;
+  }
+
+  .brand-wordmark small {
+    font-size: .43rem;
+  }
+}
