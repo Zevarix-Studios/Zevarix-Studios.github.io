@@ -1,0 +1,238 @@
+/* Zevarix Studios accessibility and type-scale refinement.
+ * Loaded after site.css so this pass stays focused and easy to review.
+ */
+
+:root {
+  --header-height: 4.6rem;
+  --muted-readable: #B2BDD0;
+  --meta-readable: #9AA8BD;
+  --micro-readable: #A6B3C7;
+}
+
+/* Keep small supporting text readable instead of decorative. */
+.eyebrow,
+.section-label {
+  margin-bottom: 1.1rem;
+  font-size: clamp(.9rem, 1vw, .98rem);
+  line-height: 1.45;
+  letter-spacing: .1em;
+}
+
+.focus-number {
+  font-size: clamp(.92rem, 1vw, 1rem);
+  font-weight: 750;
+  line-height: 1.4;
+  letter-spacing: .07em;
+}
+
+.work-type,
+.work-state {
+  color: var(--micro-readable);
+  font-size: .875rem;
+  font-weight: 650;
+  line-height: 1.45;
+  letter-spacing: .065em;
+}
+
+.hero-meta,
+.footer-inner p {
+  color: var(--meta-readable);
+  font-size: .875rem;
+  line-height: 1.5;
+  letter-spacing: .035em;
+}
+
+.primary-nav {
+  color: #B7C2D3;
+  font-size: .92rem;
+}
+
+.primary-nav a {
+  min-height: 2.75rem;
+  display: inline-flex;
+  align-items: center;
+  padding-inline: .2rem;
+}
+
+.nav-cta {
+  min-height: 2.85rem;
+  padding-inline: .95rem;
+}
+
+.lede,
+.statement-copy > p,
+.section-heading p,
+.closing-copy > p,
+.focus-card p,
+.work-copy p {
+  color: var(--muted-readable);
+}
+
+.statement-copy > p,
+.section-heading p,
+.closing-copy > p,
+.work-copy p {
+  font-size: clamp(1.05rem, 1.15vw, 1.14rem);
+}
+
+.focus-card p {
+  font-size: 1rem;
+}
+
+.work-link,
+.text-link {
+  font-size: .95rem;
+}
+
+/* A primary CTA that belongs to Constellation Z rather than the PLT visual system. */
+.button--constellation {
+  position: relative;
+  isolation: isolate;
+  min-height: 3.35rem;
+  gap: .7rem;
+  overflow: hidden;
+  padding: .8rem 1.25rem;
+  border-color: rgba(34, 211, 238, .78);
+  border-radius: .85rem .22rem .85rem .22rem;
+  background:
+    radial-gradient(circle at 92% 0%, rgba(168, 85, 247, .48), transparent 35%),
+    linear-gradient(135deg, #2563EB 0%, #1748C4 54%, #101D2B 100%);
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, .07),
+    0 .8rem 2rem rgba(37, 99, 235, .24),
+    0 0 1.4rem rgba(34, 211, 238, .08);
+  font-size: 1rem;
+  letter-spacing: -.01em;
+}
+
+.button--constellation > span {
+  position: relative;
+  z-index: 1;
+}
+
+.button--constellation::after {
+  content: "";
+  position: absolute;
+  z-index: 0;
+  top: -55%;
+  left: -35%;
+  width: 28%;
+  height: 210%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,.24), transparent);
+  transform: rotate(18deg) translateX(-170%);
+  transition: transform .5s ease;
+  pointer-events: none;
+}
+
+.button--constellation:hover {
+  border-color: var(--stellar-cyan);
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, .10),
+    0 1rem 2.4rem rgba(37, 99, 235, .32),
+    0 0 1.8rem rgba(34, 211, 238, .13);
+}
+
+.button--constellation:hover::after {
+  transform: rotate(18deg) translateX(620%);
+}
+
+.button__star {
+  flex: 0 0 auto;
+  color: var(--stellar-cyan);
+  font-size: 1.18rem;
+  line-height: 1;
+  text-shadow: 0 0 .8rem rgba(34, 211, 238, .75);
+  transition: transform .2s ease, color .2s ease;
+}
+
+.button--constellation:hover .button__star {
+  color: var(--starlight);
+  transform: rotate(18deg) scale(1.08);
+}
+
+.button,
+.nav-cta {
+  font-size: 1rem;
+}
+
+/* Strong, consistent keyboard focus, including dark translucent surfaces. */
+a:focus-visible {
+  outline: .2rem solid var(--starlight);
+  outline-offset: .22rem;
+  box-shadow: 0 0 0 .38rem rgba(34, 211, 238, .48);
+}
+
+.button:focus-visible,
+.nav-cta:focus-visible {
+  outline-offset: .28rem;
+}
+
+.skip-link {
+  min-height: 2.75rem;
+  display: inline-flex;
+  align-items: center;
+  font-size: 1rem;
+}
+
+@media (max-width: 48rem) {
+  :root {
+    --header-height: 4.4rem;
+  }
+
+  .eyebrow,
+  .section-label,
+  .focus-number,
+  .work-type,
+  .work-state,
+  .hero-meta,
+  .footer-inner p {
+    font-size: .9rem;
+  }
+
+  .button {
+    min-height: 3.25rem;
+    padding-inline: 1.15rem;
+  }
+
+  .button--constellation {
+    min-height: 3.4rem;
+  }
+}
+
+@media (prefers-contrast: more) {
+  :root {
+    --muted-readable: #D1D8E5;
+    --meta-readable: #C7D0DF;
+    --micro-readable: #D1D8E5;
+  }
+
+  .site-header,
+  .focus-card,
+  .button--quiet,
+  .nav-cta {
+    background-color: #0B1020;
+  }
+
+  .section,
+  .focus-grid,
+  .focus-card,
+  .work-list,
+  .work-row,
+  .site-footer {
+    border-color: rgba(229, 231, 235, .38);
+  }
+}
+
+@media (forced-colors: active) {
+  .button,
+  .nav-cta,
+  .skip-link {
+    forced-color-adjust: auto;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .button--constellation::after {
+    display: none;
+  }
+}
