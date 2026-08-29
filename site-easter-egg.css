@@ -1,0 +1,252 @@
+/* Konami-code easter egg: a tiny retro sci-fi hologram dancer.
+ * Decorative, hidden by default, and intentionally separate from the brand system.
+ */
+
+.konami-hologram {
+  position: fixed;
+  z-index: 80;
+  right: clamp(1rem, 2.3vw, 2rem);
+  bottom: clamp(1rem, 2.3vw, 1.8rem);
+  width: 7.4rem;
+  height: 10.6rem;
+  display: grid;
+  place-items: end center;
+  pointer-events: none;
+  visibility: hidden;
+  opacity: 0;
+  transform: translateY(.8rem) scale(.92);
+  transform-origin: 50% 100%;
+  transition: opacity .35s ease, transform .35s ease, visibility 0s linear .35s;
+}
+
+.konami-hologram.is-active {
+  visibility: visible;
+  opacity: .92;
+  transform: translateY(0) scale(1);
+  transition-delay: 0s;
+}
+
+.hologram__projection {
+  position: absolute;
+  left: 50%;
+  bottom: 1.15rem;
+  width: 6.3rem;
+  height: 8.8rem;
+  transform: translateX(-50%);
+  filter: drop-shadow(0 0 .45rem rgba(34, 211, 238, .5));
+}
+
+.hologram__projection::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  clip-path: polygon(34% 100%, 66% 100%, 88% 0, 12% 0);
+  background:
+    repeating-linear-gradient(
+      to bottom,
+      rgba(34, 211, 238, .05) 0 .12rem,
+      rgba(255,255,255,.015) .12rem .2rem,
+      transparent .2rem .34rem
+    ),
+    linear-gradient(to top, rgba(34,211,238,.12), transparent 72%);
+  animation: hologram-scan 2.8s linear infinite;
+}
+
+.hologram__projection::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: -.1rem;
+  width: 5.1rem;
+  height: .72rem;
+  border-radius: 50%;
+  border: 1px solid rgba(34, 211, 238, .58);
+  background: radial-gradient(ellipse, rgba(34, 211, 238, .24), rgba(37, 99, 235, .08) 48%, transparent 72%);
+  box-shadow: 0 0 .9rem rgba(34, 211, 238, .24);
+  transform: translateX(-50%);
+}
+
+.hologram__dancer {
+  position: absolute;
+  left: 50%;
+  bottom: .55rem;
+  width: 3.4rem;
+  height: 6.8rem;
+  color: rgba(165, 243, 252, .9);
+  filter:
+    drop-shadow(0 0 .22rem rgba(34, 211, 238, .92))
+    drop-shadow(0 0 .5rem rgba(168, 85, 247, .28));
+  transform-origin: 50% 92%;
+  animation: hologram-dance 1.7s ease-in-out infinite alternate, hologram-flicker 5.2s steps(1, end) infinite;
+}
+
+.hologram__head,
+.hologram__torso,
+.hologram__hips,
+.hologram__arm,
+.hologram__leg {
+  position: absolute;
+  display: block;
+  background: currentColor;
+}
+
+.hologram__head {
+  top: .08rem;
+  left: 50%;
+  width: .78rem;
+  height: .88rem;
+  border-radius: 48% 52% 46% 54%;
+  transform: translateX(-50%);
+}
+
+.hologram__torso {
+  top: .9rem;
+  left: 50%;
+  width: 1.03rem;
+  height: 2rem;
+  clip-path: polygon(25% 0, 75% 0, 100% 35%, 73% 100%, 27% 100%, 0 35%);
+  transform: translateX(-50%);
+}
+
+.hologram__hips {
+  top: 2.67rem;
+  left: 50%;
+  width: 1.25rem;
+  height: .65rem;
+  border-radius: 50%;
+  transform: translateX(-50%);
+}
+
+.hologram__arm {
+  top: 1.15rem;
+  width: .27rem;
+  height: 2.45rem;
+  border-radius: 999px;
+  transform-origin: 50% .12rem;
+}
+
+.hologram__arm--left {
+  left: .95rem;
+  transform: rotate(34deg);
+  animation: hologram-arm-left 1.7s ease-in-out infinite alternate;
+}
+
+.hologram__arm--right {
+  right: .95rem;
+  transform: rotate(-42deg);
+  animation: hologram-arm-right 1.7s ease-in-out infinite alternate;
+}
+
+.hologram__leg {
+  top: 3.08rem;
+  width: .31rem;
+  height: 3.25rem;
+  border-radius: 999px;
+  transform-origin: 50% .12rem;
+}
+
+.hologram__leg--left {
+  left: 1.38rem;
+  transform: rotate(8deg);
+  animation: hologram-leg-left 1.7s ease-in-out infinite alternate;
+}
+
+.hologram__leg--right {
+  right: 1.38rem;
+  transform: rotate(-14deg);
+  animation: hologram-leg-right 1.7s ease-in-out infinite alternate;
+}
+
+.hologram__base {
+  position: absolute;
+  bottom: .1rem;
+  left: 50%;
+  width: 4.7rem;
+  height: 1.05rem;
+  border: 1px solid rgba(34, 211, 238, .42);
+  border-radius: 50%;
+  background:
+    radial-gradient(ellipse at 50% 35%, rgba(34,211,238,.32), transparent 34%),
+    linear-gradient(180deg, rgba(16,29,43,.94), rgba(4,9,20,.98));
+  box-shadow:
+    inset 0 .1rem .25rem rgba(255,255,255,.04),
+    0 0 .8rem rgba(34,211,238,.18),
+    0 .45rem 1rem rgba(0,0,0,.38);
+  transform: translateX(-50%);
+}
+
+.hologram__base::before,
+.hologram__base::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  width: .24rem;
+  height: .24rem;
+  border-radius: 50%;
+  background: var(--stellar-cyan);
+  box-shadow: 0 0 .55rem rgba(34,211,238,.8);
+  transform: translateY(-50%);
+}
+
+.hologram__base::before { left: .7rem; }
+.hologram__base::after { right: .7rem; background: var(--nebula-violet); box-shadow: 0 0 .55rem rgba(168,85,247,.7); }
+
+@keyframes hologram-dance {
+  from { transform: translateX(-50%) rotate(-4deg) translateY(.03rem); }
+  to { transform: translateX(-50%) rotate(5deg) translateY(-.12rem); }
+}
+
+@keyframes hologram-arm-left {
+  from { transform: rotate(28deg); }
+  to { transform: rotate(72deg); }
+}
+
+@keyframes hologram-arm-right {
+  from { transform: rotate(-62deg); }
+  to { transform: rotate(-22deg); }
+}
+
+@keyframes hologram-leg-left {
+  from { transform: rotate(6deg); }
+  to { transform: rotate(18deg); }
+}
+
+@keyframes hologram-leg-right {
+  from { transform: rotate(-18deg); }
+  to { transform: rotate(-5deg); }
+}
+
+@keyframes hologram-scan {
+  from { background-position: 0 0, 0 0; }
+  to { background-position: 0 1.7rem, 0 0; }
+}
+
+@keyframes hologram-flicker {
+  0%, 17%, 19%, 62%, 64%, 100% { opacity: .84; }
+  18%, 63% { opacity: .52; }
+}
+
+@media (max-width: 42rem) {
+  .konami-hologram {
+    right: .75rem;
+    bottom: .75rem;
+    transform: translateY(.8rem) scale(.8);
+  }
+
+  .konami-hologram.is-active {
+    transform: translateY(0) scale(.8);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hologram__projection::before,
+  .hologram__dancer,
+  .hologram__arm,
+  .hologram__leg {
+    animation: none;
+  }
+
+  .hologram__dancer {
+    transform: translateX(-50%);
+  }
+}
