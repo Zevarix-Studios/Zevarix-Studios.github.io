@@ -1,0 +1,321 @@
+/* Ambient Zevarix Studios hero planet.
+ * Decorative only: the Constellation Z mark remains the visual authority.
+ */
+
+.hero-visual {
+  overflow: visible;
+}
+
+/* The sphere itself reads as a dark ocean world. */
+.hero-planet {
+  position: absolute;
+  z-index: 0;
+  right: -36%;
+  bottom: -69%;
+  width: min(49rem, 90vw);
+  aspect-ratio: 1;
+  overflow: hidden;
+  border-radius: 50%;
+  pointer-events: none;
+  opacity: .60;
+  background:
+    radial-gradient(circle at 25% 20%, rgba(92, 202, 238, .40), transparent 15%),
+    radial-gradient(circle at 36% 32%, rgba(34, 211, 238, .20), transparent 24%),
+    radial-gradient(circle at 48% 48%, #185b91 0 16%, #124a7d 31%, #0b3565 51%, #072145 72%, #030916 100%);
+  box-shadow:
+    inset 3rem 2.3rem 5.2rem rgba(94, 197, 235, .17),
+    inset -5.4rem -5.8rem 8.5rem rgba(0, 0, 0, .74),
+    -1rem -1rem 3.4rem rgba(34, 211, 238, .08),
+    0 0 5.5rem rgba(37, 99, 235, .08);
+  transform: rotate(-8deg);
+}
+
+.hero-planet::before {
+  content: "";
+  position: absolute;
+  inset: -1.2%;
+  z-index: 4;
+  border-radius: 50%;
+  pointer-events: none;
+  background:
+    radial-gradient(
+      circle at 35% 30%,
+      transparent 60.6%,
+      rgba(34, 211, 238, .24) 62.8%,
+      rgba(37, 99, 235, .50) 64.3%,
+      rgba(168, 85, 247, .30) 65.4%,
+      transparent 67.3%
+    );
+  filter: blur(.16rem);
+  opacity: .96;
+}
+
+.hero-planet::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  border-radius: 50%;
+  pointer-events: none;
+  background:
+    linear-gradient(126deg, rgba(255,255,255,.05), transparent 20%),
+    radial-gradient(circle at 24% 18%, rgba(111, 216, 244, .17), transparent 17%),
+    radial-gradient(circle at 70% 29%, rgba(168,85,247,.08), transparent 20%),
+    radial-gradient(circle at 44% 67%, rgba(37,99,235,.10), transparent 26%),
+    radial-gradient(circle at 57% 59%, transparent 38%, rgba(0,0,0,.39) 75%);
+}
+
+.hero-planet__surface {
+  position: absolute;
+  inset: -9%;
+  z-index: 1;
+  overflow: hidden;
+  border-radius: 50%;
+  opacity: .90;
+  background:
+    /* cyan shallows around the main continental masses */
+    radial-gradient(ellipse at 23% 35%, rgba(34, 211, 238, .28) 0 12%, rgba(33, 152, 192, .15) 16%, transparent 25%),
+    radial-gradient(ellipse at 70% 40%, rgba(34, 211, 238, .24) 0 13%, rgba(37, 132, 178, .13) 17%, transparent 26%),
+    radial-gradient(ellipse at 29% 68%, rgba(34, 211, 238, .22) 0 14%, rgba(30, 126, 174, .12) 19%, transparent 27%),
+    radial-gradient(ellipse at 73% 77%, rgba(56, 189, 248, .16) 0 13%, rgba(37, 99, 235, .10) 18%, transparent 26%),
+
+    /* larger irregular slate/teal land masses */
+    radial-gradient(ellipse at 24% 34%, rgba(6, 28, 38, .99) 0 10%, rgba(13, 49, 56, .97) 15%, rgba(23, 67, 72, .88) 20%, transparent 24%),
+    radial-gradient(ellipse at 43% 18%, rgba(8, 31, 42, .99) 0 8%, rgba(18, 55, 62, .96) 14%, rgba(38, 74, 78, .82) 19%, transparent 24%),
+    radial-gradient(ellipse at 72% 39%, rgba(5, 24, 35, .99) 0 12%, rgba(13, 45, 56, .97) 17%, rgba(27, 69, 78, .84) 22%, transparent 27%),
+    radial-gradient(ellipse at 28% 67%, rgba(7, 30, 40, .99) 0 13%, rgba(16, 52, 60, .96) 18%, rgba(35, 77, 81, .80) 23%, transparent 28%),
+    radial-gradient(ellipse at 72% 77%, rgba(9, 26, 44, .99) 0 13%, rgba(34, 52, 86, .94) 18%, rgba(61, 62, 113, .70) 23%, transparent 28%),
+    radial-gradient(ellipse at 53% 56%, rgba(11, 37, 50, .96) 0 5%, transparent 11%),
+    radial-gradient(ellipse at 58% 61%, rgba(12, 42, 52, .93) 0 4%, transparent 10%),
+    radial-gradient(ellipse at 62% 66%, rgba(18, 50, 62, .90) 0 3%, transparent 9%),
+
+    /* mineral and climate variation in Zevarix hues */
+    radial-gradient(ellipse at 56% 27%, rgba(168, 85, 247, .14) 0 6%, transparent 15%),
+    radial-gradient(ellipse at 24% 77%, rgba(99, 102, 241, .15) 0 7%, transparent 17%),
+    radial-gradient(ellipse at 78% 50%, rgba(37, 99, 235, .17) 0 8%, transparent 18%),
+
+    /* saturated ocean variation */
+    radial-gradient(circle at 31% 33%, rgba(30, 150, 210, .24), transparent 29%),
+    radial-gradient(circle at 67% 61%, rgba(18, 104, 188, .23), transparent 34%),
+    radial-gradient(circle at 47% 79%, rgba(25, 85, 171, .18), transparent 30%),
+    linear-gradient(118deg, rgba(7, 44, 88, .16), rgba(20, 112, 174, .14) 42%, rgba(5, 31, 66, .22) 74%);
+  filter: blur(.012rem);
+  transform-origin: 50% 50%;
+  animation: zevarix-planet-rotate 54s linear infinite;
+}
+
+.hero-planet__surface::before {
+  content: "";
+  position: absolute;
+  inset: 5% -15%;
+  z-index: 2;
+  border-radius: 50%;
+  opacity: .62;
+  background:
+    radial-gradient(ellipse at 15% 30%, rgba(255, 255, 255, .42) 0 3%, rgba(215, 238, 248, .18) 7%, transparent 14%),
+    radial-gradient(ellipse at 24% 35%, rgba(255, 255, 255, .31) 0 2.5%, rgba(220, 240, 248, .11) 7%, transparent 12%),
+    radial-gradient(ellipse at 45% 23%, rgba(247, 251, 253, .38) 0 4%, rgba(194, 231, 244, .10) 9%, transparent 16%),
+    radial-gradient(ellipse at 55% 28%, rgba(255, 255, 255, .25) 0 2%, transparent 10%),
+    radial-gradient(ellipse at 67% 49%, rgba(250, 252, 253, .36) 0 4%, rgba(208, 236, 247, .14) 9%, transparent 16%),
+    radial-gradient(ellipse at 79% 35%, rgba(255, 255, 255, .28) 0 3%, transparent 11%),
+    radial-gradient(ellipse at 58% 72%, rgba(240, 247, 250, .30) 0 4%, transparent 14%),
+    radial-gradient(ellipse at 34% 70%, rgba(220, 239, 247, .26) 0 3%, transparent 13%),
+    radial-gradient(ellipse at 70% 78%, rgba(255,255,255,.22) 0 2.5%, transparent 10%),
+    linear-gradient(98deg, transparent 4%, rgba(236, 247, 251, .07) 18%, transparent 30%, rgba(255,255,255,.09) 46%, transparent 60%, rgba(196, 236, 247, .06) 75%, transparent 95%);
+  filter: blur(.17rem);
+  transform: translateX(-4%) rotate(5deg);
+  animation: zevarix-cloud-drift 22s ease-in-out infinite alternate;
+}
+
+.hero-planet__surface::after {
+  content: "";
+  position: absolute;
+  inset: 15% -20%;
+  z-index: 2;
+  border-radius: 50%;
+  opacity: .36;
+  background:
+    radial-gradient(ellipse at 22% 55%, rgba(255,255,255,.30) 0 2%, transparent 8%),
+    radial-gradient(ellipse at 48% 42%, rgba(230,244,250,.26) 0 3%, transparent 10%),
+    radial-gradient(ellipse at 73% 57%, rgba(255,255,255,.28) 0 2.5%, transparent 9%),
+    radial-gradient(ellipse at 61% 31%, rgba(200, 232, 244, .18) 0 3%, transparent 10%),
+    radial-gradient(ellipse at 35% 32%, rgba(255,255,255,.18) 0 2%, transparent 9%);
+  filter: blur(.22rem);
+  transform: translateX(3%) rotate(-5deg);
+  animation: zevarix-cloud-drift-secondary 31s ease-in-out infinite alternate;
+}
+
+@keyframes zevarix-planet-rotate {
+  from { transform: rotate(0deg) scale(1.035); }
+  to { transform: rotate(360deg) scale(1.035); }
+}
+
+@keyframes zevarix-cloud-drift {
+  from { transform: translateX(-7%) rotate(5deg); }
+  to { transform: translateX(7%) rotate(8deg); }
+}
+
+@keyframes zevarix-cloud-drift-secondary {
+  from { transform: translateX(5%) rotate(-5deg); }
+  to { transform: translateX(-5%) rotate(-2deg); }
+}
+
+/* A few low-contrast asteroids add depth without becoming a belt. */
+.hero-asteroids {
+  position: absolute;
+  z-index: 1;
+  inset: -10% -18% -8% -10%;
+  pointer-events: none;
+}
+
+.asteroid {
+  position: absolute;
+  display: block;
+  aspect-ratio: 1.15;
+  opacity: .5;
+  clip-path: polygon(16% 5%, 61% 0, 92% 22%, 100% 58%, 73% 93%, 39% 100%, 8% 78%, 0 38%);
+  background:
+    radial-gradient(circle at 31% 27%, rgba(229, 231, 235, .30) 0 6%, transparent 18%),
+    radial-gradient(circle at 68% 64%, rgba(3, 9, 22, .65) 0 10%, transparent 24%),
+    linear-gradient(145deg, #526274 0%, #293746 36%, #142231 70%, #08111d 100%);
+  box-shadow: 0 .45rem 1.1rem rgba(0, 0, 0, .32);
+  filter: saturate(.75);
+  transform-origin: 50% 50%;
+}
+
+.asteroid::before,
+.asteroid::after {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(2, 8, 18, .42);
+  box-shadow: inset .08rem .08rem .12rem rgba(255, 255, 255, .08);
+}
+
+.asteroid::before {
+  width: 24%;
+  aspect-ratio: 1;
+  top: 22%;
+  right: 17%;
+}
+
+.asteroid::after {
+  width: 15%;
+  aspect-ratio: 1;
+  left: 20%;
+  bottom: 22%;
+}
+
+.asteroid--one {
+  width: .82rem;
+  top: 10%;
+  right: 9%;
+  opacity: .30;
+  filter: blur(.02rem) saturate(.65);
+  animation: zevarix-asteroid-drift-one 44s ease-in-out infinite alternate;
+}
+
+.asteroid--two {
+  width: 1.3rem;
+  top: 42%;
+  right: -2%;
+  opacity: .46;
+  animation: zevarix-asteroid-drift-two 37s ease-in-out -11s infinite alternate;
+}
+
+.asteroid--three {
+  width: 1.9rem;
+  right: 4%;
+  bottom: 8%;
+  opacity: .58;
+  filter: saturate(.82) brightness(.82);
+  animation: zevarix-asteroid-drift-three 52s ease-in-out -17s infinite alternate;
+}
+
+.asteroid--four {
+  width: .95rem;
+  left: 5%;
+  bottom: 18%;
+  opacity: .38;
+  filter: blur(.015rem) saturate(.7);
+  animation: zevarix-asteroid-drift-four 41s ease-in-out -7s infinite alternate;
+}
+
+@keyframes zevarix-asteroid-drift-one {
+  from { transform: translate3d(0, 0, 0) rotate(18deg); }
+  to { transform: translate3d(-1.4rem, 1rem, 0) rotate(78deg); }
+}
+
+@keyframes zevarix-asteroid-drift-two {
+  from { transform: translate3d(0, 0, 0) rotate(-22deg); }
+  to { transform: translate3d(-2.2rem, -1.1rem, 0) rotate(52deg); }
+}
+
+@keyframes zevarix-asteroid-drift-three {
+  from { transform: translate3d(0, 0, 0) rotate(31deg); }
+  to { transform: translate3d(-1.6rem, -1.8rem, 0) rotate(102deg); }
+}
+
+@keyframes zevarix-asteroid-drift-four {
+  from { transform: translate3d(0, 0, 0) rotate(-11deg); }
+  to { transform: translate3d(1.4rem, -1.2rem, 0) rotate(48deg); }
+}
+
+.hero-mark-field {
+  z-index: 2;
+}
+
+.hero-mark {
+  position: relative;
+  z-index: 5;
+}
+
+@media (max-width: 64rem) {
+  .hero-planet {
+    right: -42%;
+    bottom: -72%;
+    width: min(43rem, 92vw);
+    opacity: .52;
+  }
+
+  .asteroid--three {
+    width: 1.55rem;
+  }
+}
+
+@media (max-width: 48rem) {
+  .hero-planet {
+    right: -44%;
+    bottom: -78%;
+    width: min(35rem, 102vw);
+    opacity: .38;
+  }
+
+  .hero-asteroids {
+    inset: -4% -10% -4% -6%;
+  }
+
+  .asteroid--one,
+  .asteroid--four {
+    display: none;
+  }
+
+  .asteroid--two,
+  .asteroid--three {
+    opacity: .30;
+  }
+}
+
+@media (prefers-contrast: more) {
+  .hero-planet { opacity: .28; }
+  .hero-asteroids { opacity: .5; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-planet__surface,
+  .hero-planet__surface::before,
+  .hero-planet__surface::after,
+  .asteroid {
+    animation: none;
+  }
+}
