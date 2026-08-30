@@ -69,22 +69,29 @@ jobs:
 
           pages_ready=0
           for attempt in $(seq 1 30); do
-            state=$(
+            run_id=$(
               gh api \
                 "repos/$GITHUB_REPOSITORY/actions/runs?head_sha=$GITHUB_SHA&per_page=100" \
-                --jq '.workflow_runs[] | select(.name == "pages build and deployment") | "\(.status)|\(.conclusion // "")"' |
-                head -n 1 || true
+                --jq '[.workflow_runs[] | select(.name == "pages build and deployment")] | first | .id // empty' || true
             )
 
-            if [ -n "$state" ]; then
-              IFS='|' read -r status conclusion <<< "$state"
-              if [ "$status" = 'completed' ]; then
-                [ "$conclusion" = 'success' ] || {
-                  printf 'GitHub Pages deployment completed with %s\n' "$conclusion" >&2
-                  exit 1
-                }
-                pages_ready=1
-                break
+            if [ -n "$run_id" ]; then
+              state=$(
+                gh api \
+                  "repos/$GITHUB_REPOSITORY/actions/runs/$run_id/jobs?per_page=100" \
+                  --jq '[.jobs[] | select(.name == "deploy")] | first | "\(.status)|\(.conclusion // "")"' || true
+              )
+
+              if [ -n "$state" ]; then
+                IFS='|' read -r status conclusion <<< "$state"
+                if [ "$status" = 'completed' ]; then
+                  [ "$conclusion" = 'success' ] || {
+                    printf 'GitHub Pages deploy job completed with %s\n' "$conclusion" >&2
+                    exit 1
+                  }
+                  pages_ready=1
+                  break
+                fi
               fi
             fi
 
@@ -92,7 +99,7 @@ jobs:
           done
 
           [ "$pages_ready" -eq 1 ] || {
-            echo 'matching successful GitHub Pages deployment was not observed in time' >&2
+            echo 'matching successful GitHub Pages deploy job was not observed in time' >&2
             exit 1
           }
 
