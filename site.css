@@ -231,7 +231,7 @@ a:focus-visible {
 .section-label {
   margin: 0 0 1rem;
   color: var(--stellar-cyan);
-  font-size: .76rem;
+  font-size: .88rem;
   font-weight: 700;
   letter-spacing: .13em;
   text-transform: uppercase;
@@ -308,7 +308,7 @@ h1 span {
 .hero-meta {
   margin: 1.25rem 0 0;
   color: #7E8BA1;
-  font-size: .72rem;
+  font-size: .85rem;
   letter-spacing: .04em;
 }
 
@@ -444,7 +444,7 @@ h1 span {
   display: block;
   margin-bottom: 4.4rem;
   color: var(--stellar-cyan);
-  font-size: .72rem;
+  font-size: .82rem;
   letter-spacing: .08em;
 }
 
@@ -478,7 +478,7 @@ h1 span {
 .work-state {
   padding-top: .34rem;
   color: #8E9BB0;
-  font-size: .7rem;
+  font-size: .8rem;
   letter-spacing: .08em;
   text-transform: uppercase;
 }
